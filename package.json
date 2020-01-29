@@ -17,9 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dp:dev": "npm run dp:dev:e && npm run dp:dev:w",
-    "dp:dev:e": "sls client deploy -c deploy/s3.sls/serverless.yml -r us-east-1 -s dev --no-delete-contents --no-confirm",
-    "dp:dev:w": "sls client deploy -c deploy/s3.sls/serverless.yml -r us-west-1 -s dev --no-delete-contents --no-confirm"
+    "dp:dev": "node deploy/scripts/dev.js"
   },
   "eslintConfig": {
     "extends": "react-app"
