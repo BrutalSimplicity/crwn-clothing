@@ -16,7 +16,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dp:dev": "npm run dp:dev:e && npm run dp:dev:w",
+    "dp:dev:e": "sls client deploy -c deploy/s3.sls/serverless.yml -r us-east-1 -s dev --no-delete-contents --no-confirm",
+    "dp:dev:w": "sls client deploy -c deploy/s3.sls/serverless.yml -r us-west-1 -s dev --no-delete-contents --no-confirm"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,7 +37,10 @@
     ]
   },
   "devDependencies": {
+    "@onica/runway": "^1.3.7",
     "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.17.0"
+    "eslint-plugin-react": "^7.17.0",
+    "serverless": "^1.61.3",
+    "serverless-finch": "^2.5.2"
   }
 }

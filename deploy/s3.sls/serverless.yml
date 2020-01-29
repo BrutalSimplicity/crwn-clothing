@@ -1,0 +1,15 @@
+service:
+    name: crwn-clothing-website
+
+provider:
+    name: aws
+
+plugins:
+    - serverless-finch
+
+custom:
+    client:
+        bucketName: ${self:service.name}-${opt:stage}-${opt:region}
+        distributionFolder: 'build'
+        indexDocument: 'index.html'
+        errorDocument: 'error.html'
