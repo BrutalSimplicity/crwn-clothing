@@ -1,15 +1,35 @@
 service:
-    name: crwn-clothing-website
+  name: crwn-clothing-website
 
 provider:
-    name: aws
+  name: aws
 
 plugins:
-    - serverless-finch
+  - serverless-s3-deploy
 
 custom:
-    client:
-        bucketName: ${self:service.name}-${opt:stage}-${opt:region}
-        distributionFolder: 'build'
-        indexDocument: 'index.html'
-        errorDocument: 'error.html'
+  assets:
+    auto: true
+    targets:
+      - bucket:
+          Ref: CrwnClothingWebsiteBucket
+        acl: public-read
+        files:
+          - source: 'build/'
+            globs: ['**/*']
+            headers:
+              CacheControl: max-age=31536000
+
+resources:
+  - ${file(deploy/templates/s3.yml)}
+  - Outputs:
+      WebsiteBucketName:
+        Value:
+          !GetAtt CrwnClothingWebsiteBucket.Arn
+      WebsiteBucketDomainName:
+        Value:
+          !GetAtt CrwnClothingWebsiteBucket.DomainName
+      WebsiteBucketWebsiteUrl:
+        Value:
+          !GetAtt CrwnClothingWebsiteBucket.WebsiteURL
+

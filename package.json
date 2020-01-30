@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "firebase": "^7.7.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -38,7 +39,8 @@
     "@onica/runway": "^1.3.7",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0",
+    "js-yaml": "^3.13.1",
     "serverless": "^1.61.3",
-    "serverless-finch": "^2.5.2"
+    "serverless-s3-deploy": "^0.9.0"
   }
 }
