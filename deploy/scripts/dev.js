@@ -6,9 +6,9 @@ const config = utils.readConfig('deploy/config.yml', 'dev');
 deploy();
 
 function deploy() {
-    Object.keys(config.regions).forEach(region => {
-        cp.execSync(`
+    config.regions.forEach(region => {
+        utils.exec(`
             sls deploy -v -c deploy/s3.sls/serverless.yml -r ${region} -s dev
-        `, { stdio: 'inherit' });
+        `);
     });
 }

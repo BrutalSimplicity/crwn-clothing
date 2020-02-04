@@ -1,12 +1,11 @@
-Resources:
-  CrwnClothingWebsiteBucket:
-    Type: AWS::S3::Bucket
-    Properties: 
-      AccessControl: PublicRead
-      BucketName: crwn-clothing-website-bucket-${opt:stage}-${opt:region}
-      WebsiteConfiguration:
-        IndexDocument: index.html
-        ErrorDocument: index.html
-      Tags:
-        - Key: project
-          Value: crwn-clothing
+S3Bucket:
+  Type: AWS::S3::Bucket
+  Properties: 
+    AccessControl: PublicRead
+    BucketName: !Join ["-", ["crwn-clothing-website-bucket-${opt:stage}-${opt:region}", !Ref AWS::AccountId]]
+    WebsiteConfiguration:
+      IndexDocument: index.html
+      ErrorDocument: index.html
+    Tags:
+      - Key: project
+        Value: crwn-clothing

@@ -21,15 +21,18 @@ custom:
               CacheControl: max-age=31536000
 
 resources:
-  - ${file(deploy/templates/s3.yml)}
-  - Outputs:
-      WebsiteBucketName:
-        Value:
-          !GetAtt CrwnClothingWebsiteBucket.Arn
-      WebsiteBucketDomainName:
-        Value:
-          !GetAtt CrwnClothingWebsiteBucket.DomainName
-      WebsiteBucketWebsiteUrl:
-        Value:
-          !GetAtt CrwnClothingWebsiteBucket.WebsiteURL
+  Resources:
+    CrwnClothingWebsiteBucket:
+      ${file(deploy/templates/s3.yml):S3Bucket}
+
+  Outputs:
+    WebsiteBucketName:
+      Value:
+        !GetAtt CrwnClothingWebsiteBucket.Arn
+    WebsiteBucketDomainName:
+      Value:
+        !GetAtt CrwnClothingWebsiteBucket.DomainName
+    WebsiteBucketWebsiteUrl:
+      Value:
+        !GetAtt CrwnClothingWebsiteBucket.WebsiteURL
 
